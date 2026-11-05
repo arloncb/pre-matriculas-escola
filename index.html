@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><script src="https://myhub.ia.br/canvas-vendor/tailwind.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#5920e8">
+  <title>Pré-matrículas 2027 | Escola Padre Constantino de Monte</title>
+  <style>
+    :root {
+      --purple: #5920e8;
+      --purple-dark: #35109c;
+      --ink: #211544;
+      --muted: #665f79;
+      --paper: #fbfaff;
+      --line: #e9e3f5;
+      --mint: #dff9ee;
+      --yellow: #fff1b8;
+      --white: #ffffff;
+      --shadow: 0 18px 55px rgba(48, 19, 112, .12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: white;
+      padding: 18px 24px 52px;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(255,255,255,.14) 0 7px, transparent 8px),
+        radial-gradient(circle at 10% 88%, rgba(255,255,255,.12) 0 5px, transparent 6px),
+        linear-gradient(135deg, #6829f2 0%, #4d18d3 56%, #35109c 100%);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(255,255,255,.17);
+      border-radius: 999px;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 390px;
+      height: 390px;
+      right: -130px;
+      top: -195px;
+    }
+
+    .hero::after {
+      width: 260px;
+      height: 260px;
+      left: -110px;
+      bottom: -175px;
+    }
+
+    .topbar, .hero-content, main, footer {
+      width: min(1120px, 100%);
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .school-name {
+      font-weight: 750;
+      letter-spacing: .02em;
+      font-size: .92rem;
+    }
+
+    .top-link {
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,.45);
+      padding: 9px 15px;
+      border-radius: 999px;
+      font-size: .88rem;
+      transition: background .2s, transform .2s;
+    }
+
+    .top-link:hover { background: rgba(255,255,255,.14); transform: translateY(-2px); }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: 0;
+      padding-top: 34px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: .82rem;
+      font-weight: 650;
+      background: rgba(255,255,255,.1);
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #b7ffdc;
+      box-shadow: 0 0 0 5px rgba(183,255,220,.15);
+    }
+
+    h1 {
+      max-width: 720px;
+      margin: 19px 0 12px;
+      font-size: clamp(2.35rem, 6vw, 4.8rem);
+      line-height: 1.04;
+      letter-spacing: -.055em;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+      margin: 0;
+      color: rgba(255,255,255,.86);
+      font-size: clamp(1rem, 2vw, 1.16rem);
+    }
+
+    .logo-wrap {
+      width: min(850px, 100%);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      padding: 10px;
+      border-radius: 24px;
+      animation: rise .55s both;
+    }
+
+    .school-logo {
+      width: 138px;
+      height: 138px;
+      display: block;
+      flex: 0 0 138px;
+      object-fit: contain;
+      padding: 10px;
+      border-radius: 22px;
+      background: white;
+      box-shadow: 0 12px 30px rgba(28, 8, 88, .18);
+    }
+
+    .state-logo {
+      width: min(430px, 100%);
+      height: 135px;
+      display: block;
+      object-fit: contain;
+      padding: 8px;
+      border-radius: 18px;
+      background: white;
+      box-shadow: 0 12px 30px rgba(28, 8, 88, .18);
+    }
+
+    .state-brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      max-width: 340px;
+      padding: 17px 22px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 20px;
+      color: #fff;
+      background: rgba(255,255,255,.1);
+    }
+
+    .state-brand-mark {
+      display: grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      flex: 0 0 54px;
+      border-radius: 15px;
+      color: #245a91;
+      background: #fff;
+      font-size: 1.05rem;
+      font-weight: 900;
+      letter-spacing: .02em;
+    }
+
+    .state-brand strong {
+      display: block;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .state-brand span {
+      display: block;
+      margin-top: 4px;
+      color: rgba(255,255,255,.82);
+      font-size: .82rem;
+      line-height: 1.3;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 11px 17px;
+      border-radius: 14px;
+      font-weight: 750;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+
+    .button:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(20, 8, 62, .2); }
+    .button-light { color: var(--purple-dark); background: white; }
+    .button-outline { color: white; border: 1px solid rgba(255,255,255,.45); }
+
+    main { padding: 0 24px 74px; }
+
+    .notice {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 20px;
+      margin: -32px auto 48px;
+      padding: 21px 25px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .notice strong { display: block; margin-bottom: 3px; font-size: 1.03rem; }
+    .notice p { margin: 0; color: var(--muted); font-size: .93rem; }
+    .notice-date {
+      white-space: nowrap;
+      padding: 9px 13px;
+      border-radius: 12px;
+      background: var(--yellow);
+      font-weight: 800;
+      color: #553b00;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 22px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(1.6rem, 3vw, 2.25rem);
+      letter-spacing: -.035em;
+    }
+
+    .section-heading p { margin: 5px 0 0; color: var(--muted); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 58px;
+    }
+
+    .step-card {
+      position: relative;
+      min-height: 226px;
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 8px 26px rgba(48, 19, 112, .05);
+      animation: rise .65s both;
+    }
+
+    .step-card:nth-child(2) { animation-delay: .1s; }
+    .step-card:nth-child(3) { animation-delay: .2s; }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 17px;
+      border-radius: 13px;
+      color: var(--purple-dark);
+      background: #eee7ff;
+      font-weight: 850;
+    }
+
+    .step-card h3 { margin: 0 0 8px; font-size: 1.08rem; }
+    .step-card p { margin: 0; color: var(--muted); font-size: .94rem; }
+    .step-card a { color: var(--purple); font-weight: 750; }
+
+    .pathway {
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: white;
+      box-shadow: var(--shadow);
+      margin-bottom: 58px;
+    }
+
+    .pathway-intro { margin: 0 0 18px; color: var(--muted); }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .choice-button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      min-height: 76px;
+      padding: 18px 20px;
+      border: 1px solid #d9cdf8;
+      border-radius: 16px;
+      color: var(--purple-dark);
+      background: #f8f5ff;
+      font: inherit;
+      font-weight: 800;
+      text-align: left;
+      cursor: pointer;
+      transition: transform .2s, border-color .2s, background .2s, box-shadow .2s;
+    }
+
+    .choice-button:hover {
+      transform: translateY(-2px);
+      border-color: var(--purple);
+      background: #f0eaff;
+      box-shadow: 0 9px 22px rgba(48, 19, 112, .09);
+    }
+
+    .pathway > .choice-grid .choice-button {
+      min-height: 172px;
+      padding: 32px;
+      border: 2px solid #c9b7ff;
+      border-radius: 22px;
+      color: var(--purple-dark);
+      background: linear-gradient(135deg, #fff 0%, #f3edff 100%);
+      box-shadow: 0 12px 30px rgba(48, 19, 112, .1);
+      font-size: clamp(1.2rem, 2.7vw, 1.55rem);
+    }
+
+    .pathway > .choice-grid .choice-button:hover {
+      transform: translateY(-5px) scale(1.015);
+      border-color: var(--purple);
+      background: linear-gradient(135deg, #fff 0%, #e9deff 100%);
+      box-shadow: 0 18px 36px rgba(48, 19, 112, .17);
+    }
+
+    .pathway > .choice-grid .choice-button span:last-child {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      color: white;
+      background: var(--purple);
+      font-size: 1.5rem;
+      flex: 0 0 42px;
+    }
+
+    .choice-button span:last-child { font-size: 1.35rem; }
+
+    .flow-panel {
+      margin-top: 20px;
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fcfbff;
+      animation: rise .35s both;
+    }
+
+    .flow-panel[hidden] { display: none; }
+    .flow-panel h3 { margin: 0 0 12px; font-size: 1.2rem; }
+    .flow-panel p { color: var(--muted); }
+    .flow-panel a { color: var(--purple); font-weight: 800; }
+
+    .flow-steps {
+      display: grid;
+      gap: 12px;
+      margin: 18px 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: flow;
+    }
+
+    .flow-steps li {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      align-items: start;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: white;
+      counter-increment: flow;
+    }
+
+    .flow-steps li::before {
+      content: "0" counter(flow);
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      color: var(--purple-dark);
+      background: #eee7ff;
+      font-weight: 850;
+    }
+
+    .portal-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 4px 0 12px;
+      padding: 12px 16px;
+      border-radius: 13px;
+      color: white !important;
+      background: var(--purple);
+      text-decoration: none;
+    }
+
+    .flow-note {
+      padding: 13px 15px;
+      border-radius: 13px;
+      color: #4e3a00 !important;
+      background: var(--yellow);
+    }
+
+    .documents-box {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #d9cdf8;
+      border-radius: 16px;
+      background: #f8f5ff;
+    }
+
+    .documents-box h4 {
+      margin: 0 0 12px;
+      color: var(--purple-dark);
+      font-size: 1.05rem;
+    }
+
+    .documents-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px 18px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .documents-list li {
+      position: relative;
+      padding-left: 25px;
+      color: var(--ink);
+    }
+
+    .documents-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #138d61;
+      font-weight: 900;
+    }
+
+    @media (max-width: 760px) {
+      .documents-list { grid-template-columns: 1fr; }
+    }
+
+    .back-button {
+      margin-top: 8px;
+      padding: 9px 0;
+      border: 0;
+      color: var(--purple);
+      background: transparent;
+      font: inherit;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .faq-section { margin-top: 8px; }
+
+    .faq-tools {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 18px 0 20px;
+    }
+
+    .search-box {
+      flex: 1 1 270px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 15px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: white;
+    }
+
+    .search-box span { color: var(--muted); font-size: 1.15rem; }
+    .search-box input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      color: var(--ink);
+      background: transparent;
+      font: inherit;
+    }
+
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .filter-button {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 13px;
+      color: var(--muted);
+      background: white;
+      font: inherit;
+      font-size: .88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .filter-button:hover, .filter-button.active {
+      border-color: var(--purple);
+      color: white;
+      background: var(--purple);
+    }
+
+    .faq-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: start;
+      gap: 14px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: white;
+      overflow: hidden;
+      box-shadow: 0 7px 20px rgba(48, 19, 112, .045);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+
+    .faq-item:hover,
+    .faq-item:focus-within {
+      transform: translateY(-8px);
+      border-color: #c9b7ff;
+      box-shadow: 0 16px 32px rgba(48, 19, 112, .12);
+    }
+
+    .faq-item[open] { border-color: #c9b7ff; box-shadow: 0 10px 28px rgba(48, 19, 112, .09); }
+
+    .faq-item summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 18px 20px;
+      cursor: pointer;
+      list-style: none;
+      font-weight: 750;
+    }
+
+    .faq-item summary::-webkit-details-marker { display: none; }
+
+    .faq-item summary::after {
+      content: "+";
+      flex: 0 0 28px;
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--purple);
+      background: #f0ebff;
+      font-size: 1.2rem;
+      transition: transform .2s;
+    }
+
+    .faq-item[open] summary::after { content: "−"; transform: rotate(180deg); }
+    .faq-answer { padding: 0 20px 19px; color: var(--muted); }
+    .faq-answer p { margin: 0 0 10px; }
+    .faq-answer p:last-child { margin-bottom: 0; }
+    .faq-answer a { color: var(--purple); font-weight: 750; }
+    .faq-tag {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      color: #4d2bb1;
+      background: #f0ebff;
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    .empty-state {
+      display: none;
+      padding: 24px;
+      border: 1px dashed #c9b7ff;
+      border-radius: 16px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .help-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 20px;
+      margin-top: 36px;
+      padding: 28px;
+      border-radius: 22px;
+      color: white;
+      background: linear-gradient(135deg, #138d61, #086b49);
+      box-shadow: 0 16px 36px rgba(8, 107, 73, .22);
+    }
+
+    .help-box h2 { margin: 0 0 5px; font-size: clamp(1.3rem, 3vw, 1.75rem); }
+    .help-box p { margin: 0; color: rgba(255,255,255,.88); }
+    .help-note { color: rgba(255,255,255,.78); font-size: .85rem; }
+
+    .whatsapp-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 52px;
+      padding: 13px 18px;
+      border: 2px solid rgba(255,255,255,.75);
+      border-radius: 14px;
+      color: #07583d;
+      background: white;
+      font-weight: 850;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .whatsapp-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+    }
+
+    footer {
+      padding: 24px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      text-align: center;
+      font-size: .88rem;
+    }
+
+    footer strong { color: var(--ink); }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-9px) rotate(1deg); }
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 760px) {
+      .hero { padding: 20px 18px 68px; }
+      .pathway { padding: 18px; }
+      .choice-grid { grid-template-columns: 1fr; }
+      .flow-panel { padding: 17px; }
+      .hero-content { grid-template-columns: 1fr; padding-top: 44px; gap: 22px; }
+      .logo-wrap { width: 100%; gap: 12px; }
+      .school-logo { width: 96px; height: 96px; flex-basis: 96px; }
+      .state-logo { width: min(340px, 100%); height: auto; }
+      .state-brand { gap: 9px; padding: 12px; }
+      .state-brand-mark { width: 42px; height: 42px; flex-basis: 42px; border-radius: 12px; font-size: .9rem; }
+      .state-brand strong { font-size: .86rem; }
+      .state-brand span { font-size: .72rem; }
+      main { padding-inline: 18px; }
+      .notice { grid-template-columns: 1fr; margin-bottom: 40px; }
+      .notice-date { justify-self: start; }
+      .steps { grid-template-columns: 1fr; }
+      .faq-list { grid-template-columns: 1fr; }
+      .step-card { min-height: auto; }
+      .section-heading { align-items: start; flex-direction: column; }
+      .help-box { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar" aria-label="Navegação principal">
+      <div class="school-name">Escola Padre Constantino de Monte</div>
+      <a class="top-link" href="#duvidas">Ver dúvidas frequentes ↓</a>
+    </nav>
+
+    <div class="hero-content">
+      <div class="logo-wrap" aria-label="Logos da Escola Padre Constantino de Monte e do Governo de Mato Grosso do Sul">
+        <img class="school-logo" src="https://d31zra5bs5df64.cloudfront.net/prod/3IKpBSA9KUapdMfCHF2NvmZkYRY/chat/3LhMGulMa2Hu29kuf4mIqrwQjOn/3LhcRvmy3T8lw8f8ZvpLH5ZcsCj.png?Expires=1793913335&Key-Pair-Id=K2FT0I8VPJSP5H&Signature=rNRCU3xYWxVzvh6rhnK8il0htCxmOq8HXUxTQUmoP7JPJ-VcP5vf7paNs-6nd5tOXbe-AdvwRFrUafnrYGlwKuEI38bBLcdh1cvwCMi~06LwQ7lPQqG7lLmOslymyAByzBu7ET9oYVU2TeHXUsI-0bDIxyYCMJcX~kEnCE~z9v9TEKguAJGcP4ZGE4jqWU4kQIJLUHZMAmT0t1OcKsVS1OxGBcOSx~jKw0TUgNvHY4hEVn4edm8JV~p~iT3LBnEky8zjg5Jyf~ZRt~lXTisiCXXdYn3qO~HGLz6vMZKI6bBHDdLI8IvgjycBZWrX~UBPj9-qJj-MtREWzj0nVhuuig__" alt="Logo da Escola Padre Constantino de Monte" loading="eager" decoding="async">
+        <img class="state-logo" src="https://d31zra5bs5df64.cloudfront.net/prod/3IKpBSA9KUapdMfCHF2NvmZkYRY/chat/3LhMGulMa2Hu29kuf4mIqrwQjOn/3LhcUvzsozEcn8G2OzcqgPJ3TVX.jpg?Expires=1793913359&Key-Pair-Id=K2FT0I8VPJSP5H&Signature=p1ZzKYek7a3TM63ifM2yrtMNNvWxy~yBM-1O0Ye-zjxd8BrkxAWC6OfObG6gw3bg1rQDd9uEKc6LOkCSyzQ9lCApCRiWE6YkeeFyev-jC7yqKVS6p6gml9pM1M7ZSuT77Vv-juKV36s-0r7ZfLiitZx7YvTUZOJC51hLbLf2wkdRc2Kkl~z5MoB7JSB1rglmYibI-ND~dian4hdfhIDidLKod8zmsBRxx3NpB9M8nwJpdLZME~iPsATNkOqVW18PELIiZLhfz2LJ7h~iZrfw~ExXxrmdSIOx6ziKL6MNaBospfwYHgF1NtxYZ1DQywTpjZnLBaBsq6ckmBTaFwXoRg__" alt="Logo da Secretaria de Estado de Educação e do Governo de Mato Grosso do Sul" loading="eager" decoding="async">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <aside class="notice" aria-label="Data de início da pré-matrícula">
+      <div class="notice-date">Pré-matrícula para novos estudantes: 09/11/2026</div>
+    </aside>
+
+    <section id="passos" aria-labelledby="steps-title">
+      <div class="section-heading">
+        <div>
+          <h2 id="steps-title">Como podemos ajudar?</h2>
+          <p>Escolha a opção que corresponde à sua situação.</p>
+        </div>
+      </div>
+
+      <div class="pathway">
+        <p class="pathway-intro">Selecione uma opção para ver as orientações de pré-matrícula 2027.</p>
+
+        <div class="choice-grid">
+          <button class="choice-button" type="button" data-flow="aluno">
+            <span>🎒 Sou aluno da Escola!</span><span aria-hidden="true">→</span>
+          </button>
+          <button class="choice-button" type="button" data-flow="novo">
+            <span>✨ Ainda não sou aluno da Escola</span><span aria-hidden="true">→</span>
+          </button>
+        </div>
+
+        <div class="flow-panel" id="flow-aluno" hidden aria-live="polite">
+          <h3>Para quem já estuda na escola</h3>
+          <p>Siga estas etapas para confirmar sua permanência em 2027:</p>
+          <ol class="flow-steps">
+            <li><span><strong>Faça a atualização cadastral</strong> no Portal do Estudante.</span></li>
+            <li><span><strong>Confirme sua permanência</strong> no Portal do Estudante.</span></li>
+            <li><span><strong>Vá até a secretaria</strong> para assinar o novo Requerimento de Matrícula 2027. Se o estudante for menor de 18 anos, deve comparecer o responsável.</span></li>
+          </ol>
+          <a class="portal-link" href="https://paineldoaluno.ms.gov.br" target="_blank" rel="noopener noreferrer">Acessar o Portal do Estudante <span aria-hidden="true">↗</span></a>
+          <p class="flow-note">Teve dificuldade para confirmar a permanência? A confirmação pode ser feita na secretaria. Menores de 18 anos devem estar acompanhados pelo responsável; estudantes com 18 anos ou mais podem comparecer por conta própria.</p>
+          <button class="back-button" type="button" data-reset>← Voltar às opções</button>
+        </div>
+
+        <div class="flow-panel" id="flow-novo" hidden aria-live="polite">
+          <h3>📌 Você estudou na Rede Estadual em 2026?</h3>
+          <p>Escolha a opção que corresponde à sua situação.</p>
+          <div class="choice-grid">
+            <button class="choice-button" type="button" data-flow="rede-estadual">
+              <span>🏫 Sou aluno da Rede Estadual em 2026</span><span aria-hidden="true">→</span>
+            </button>
+            <button class="choice-button" type="button" data-flow="outras-redes">
+              <span>🌱 Não sou aluno da Rede Estadual em 2026</span><span aria-hidden="true">→</span>
+            </button>
+          </div>
+
+          <div class="documents-box">
+            <h4>📄 Documentos necessários para fazer a matrícula na escola</h4>
+            <ul class="documents-list">
+              <li>📜 Certidão de nascimento ou casamento</li>
+              <li>🪪 CPF</li>
+              <li>🪪 RG (obrigatório para maiores de 18 anos)</li>
+              <li>📃 Declaração de transferência original ou documento de transferência</li>
+              <li>📚 Histórico escolar (dependendo do caso)</li>
+              <li>🏠 Comprovante de endereço</li>
+              <li>💉 Comprovante de atualização de vacina, fornecido no posto de saúde</li>
+              <li>💉 Carteira de vacinação</li>
+              <li>🏥 Cartão do SUS</li>
+              <li>👤 Documento com foto do responsável legal</li>
+              <li>📑 Termo de guarda, se necessário</li>
+            </ul>
+          </div>
+
+          <button class="back-button" type="button" data-reset>← Voltar às opções</button>
+        </div>
+
+        <div class="flow-panel" id="flow-rede-estadual" hidden aria-live="polite">
+          <h3>Aluno da Rede Estadual em 2026</h3>
+          <p><strong>Não confirme sua permanência na escola atual.</strong> Faça um pedido de pré-matrícula para a Escola Padre Constantino de Monte pelo portal Matrícula Digital.</p>
+          <a class="portal-link" href="https://matriculadigital.sed.ms.gov.br" target="_blank" rel="noopener noreferrer">Acessar Matrícula Digital <span aria-hidden="true">↗</span></a>
+          <p>Escolha a opção <strong>“Aluno da rede estadual de MS”</strong> e siga as etapas do portal.</p>
+          <p class="flow-note">Depois, fique atento ao Diário Oficial de Mato Grosso do Sul: a lista de estudantes designados é divulgada nas primeiras semanas de janeiro.</p>
+          <button class="back-button" type="button" data-back="novo">← Voltar à escolha anterior</button>
+        </div>
+
+        <div class="flow-panel" id="flow-outras-redes" hidden aria-live="polite">
+          <h3>Aluno de outra rede em 2026</h3>
+          <p>Acesse o portal Matrícula Digital, clique em <strong>“Aluno Novo”</strong> e siga as etapas indicadas.</p>
+          <a class="portal-link" href="https://matriculadigital.sed.ms.gov.br" target="_blank" rel="noopener noreferrer">Acessar Matrícula Digital <span aria-hidden="true">↗</span></a>
+          <p class="flow-note">Fique atento ao Diário Oficial de Mato Grosso do Sul: a lista de estudantes designados é divulgada nas primeiras semanas de janeiro.</p>
+          <button class="back-button" type="button" data-back="novo">← Voltar à escolha anterior</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section" id="duvidas" aria-labelledby="faq-title">
+      <div class="section-heading">
+        <div>
+          <h2 id="faq-title">Dúvidas frequentes</h2>
+          <p>Encontre uma resposta rápida ou pesquise por assunto.</p>
+        </div>
+      </div>
+
+      <div class="faq-tools">
+        <label class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <input id="faq-search" type="search" placeholder="Buscar uma dúvida..." aria-label="Buscar uma dúvida">
+        </label>
+        <div class="filters" role="group" aria-label="Filtrar dúvidas">
+          <button class="filter-button active" type="button" data-filter="todas" aria-pressed="true">Todas</button>
+          <button class="filter-button" type="button" data-filter="atual" aria-pressed="false">Alunos atuais</button>
+          <button class="filter-button" type="button" data-filter="novo" aria-pressed="false">Novos alunos</button>
+        </div>
+      </div>
+
+      <div class="faq-list" id="faq-list">
+        <details class="faq-item" data-category="atual" data-search="aluno atual atualização cadastral portal estudante">
+          <summary>Já estudo na escola. O que preciso fazer?</summary>
+          <div class="faq-answer">
+            <span class="faq-tag">Alunos atuais</span>
+            <p>Você precisa fazer a atualização cadastral e confirmar sua permanência pelo <a href="https://paineldoaluno.ms.gov.br" target="_blank" rel="noopener noreferrer">Portal do Estudante</a>.</p>
+            <p>Depois desses dois passos, é necessário assinar o novo Requerimento de Matrícula na secretaria da escola.</p>
+          </div>
+        </details>
+
+        <details class="faq-item" data-category="atual" data-search="dificuldade confirmar permanência secretaria responsável menor 18 estudante maior">
+          <summary>E se eu tiver dificuldade para confirmar minha permanência?</summary>
+          <div class="faq-answer">
+            <span class="faq-tag">Alunos atuais</span>
+            <p>A confirmação pode ser realizada na secretaria da escola. Se o estudante tiver menos de 18 anos, deve comparecer o responsável. Se tiver 18 anos ou mais, pode comparecer o próprio estudante.</p>
+          </div>
+        </details>
+
+        <details class="faq-item" data-category="atual" data-search="requerimento matrícula assinar secretaria depois atualização confirmação">
+          <summary>Preciso assinar algum documento na escola?</summary>
+          <div class="faq-answer">
+            <span class="faq-tag">Alunos atuais</span>
+            <p>Sim. Depois de atualizar o cadastro e confirmar a permanência, é necessário assinar o novo Requerimento de Matrícula na secretaria da escola.</p>
+          </div>
+        </details>
+
+        <details class="faq-item" data-category="novo" data-search="novo estudante estudar conosco 2027 data pré matrícula">
+          <summary>Quero estudar na escola em 2027. Quando faço a pré-matrícula?</summary>
+          <div class="faq-answer">
+            <span class="faq-tag">Novos alunos</span>
+            <p>A data informada para a pré-matrícula de novos estudantes é <strong>09/11/2026</strong>, pelo portal <a href="https://matriculadigital.sed.ms.gov.br" target="_blank" rel="noopener noreferrer">Matrícula Digital MS</a>.</p>
+          </div>
+        </details>
+
+        <details class="faq-item" data-category="novo" data-search="matrícula digital opções aluno rede estadual MS outras redes">
+          <summary>Qual opção devo escolher no portal Matrícula Digital?</summary>
+          <div class="faq-answer">
+            <span class="faq-tag">Novos alunos</span>
+            <p>No portal <a href="https://matriculadigital.sed.ms.gov.br" target="_blank" rel="noopener noreferrer">Matrícula Digital MS</a>, escolha a opção correspondente: <strong>“Aluno da rede estadual de MS”</strong> ou <strong>“Aluno de outras redes”</strong>.</p>
+          </div>
+        </details>
+
+        <details class="faq-item" data-category="novo" data-search="lista designados resultado diário oficial Mato Grosso do Sul janeiro">
+          <summary>Onde vejo se fui designado para a escola?</summary>
+          <div class="faq-answer">
+            <span class="faq-tag">Novos alunos</span>
+            <p>A lista de estudantes designados é divulgada no <strong>Diário Oficial de Mato Grosso do Sul</strong>, nas primeiras semanas de janeiro. Fique atento às publicações.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="empty-state" id="empty-state" role="status">Não encontramos dúvidas com esse termo. Tente outra palavra ou escolha “Todas”.</div>
+    </section>
+
+    <section class="help-box" aria-label="Atendimento pelo WhatsApp">
+      <div>
+        <h2>🙋 Ainda precisa de ajuda?</h2>
+        <p>💬 Mande um WhatsApp para nós! <strong>(67) 3454-1045</strong></p>
+        <span class="help-note">Este site é informativo e não realiza matrículas.</span>
+      </div>
+      <a class="whatsapp-link" href="https://wa.me/556734541045" target="_blank" rel="noopener noreferrer">
+        Chamar no WhatsApp <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Escola Padre Constantino de Monte</strong><br>
+    Informações sobre pré-matrículas e permanência escolar — 2027
+  </footer>
+
+  <script>
+    const flowPanels = [...document.querySelectorAll(".flow-panel")];
+
+    function showFlow(flowId) {
+      flowPanels.forEach((panel) => {
+        panel.hidden = panel.id !== "flow-" + flowId;
+      });
+    }
+
+    document.querySelectorAll("[data-flow]").forEach((button) => {
+      button.addEventListener("click", () => showFlow(button.dataset.flow));
+    });
+
+    document.querySelectorAll("[data-reset]").forEach((button) => {
+      button.addEventListener("click", () => {
+        flowPanels.forEach((panel) => { panel.hidden = true; });
+      });
+    });
+
+    document.querySelectorAll("[data-back]").forEach((button) => {
+      button.addEventListener("click", () => showFlow(button.dataset.back));
+    });
+
+    const searchInput = document.getElementById("faq-search");
+    const filterButtons = [...document.querySelectorAll(".filter-button")];
+    const faqItems = [...document.querySelectorAll(".faq-item")];
+    const emptyState = document.getElementById("empty-state");
+    let activeFilter = "todas";
+
+    function updateFaqs() {
+      const query = searchInput.value.trim().toLocaleLowerCase("pt-BR");
+      let visibleCount = 0;
+
+      faqItems.forEach((item) => {
+        const matchesCategory = activeFilter === "todas" || item.dataset.category === activeFilter;
+        const searchableText = (item.dataset.search + " " + item.textContent).toLocaleLowerCase("pt-BR");
+        const matchesSearch = !query || searchableText.includes(query);
+        const visible = matchesCategory && matchesSearch;
+
+        item.hidden = !visible;
+        if (!visible) item.open = false;
+        if (visible) visibleCount++;
+      });
+
+      emptyState.style.display = visibleCount ? "none" : "block";
+    }
+
+    searchInput.addEventListener("input", updateFaqs);
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        activeFilter = button.dataset.filter;
+        filterButtons.forEach((item) => {
+          const selected = item === button;
+          item.classList.toggle("active", selected);
+          item.setAttribute("aria-pressed", String(selected));
+        });
+        updateFaqs();
+      });
+    });
+
+    updateFaqs();
+  </script>
+</body>
+</html>
